@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+
+ <head>
+ <title>Bezier curves</title>
+  <style type="text/css">
+    .wrapper {
+      display: flex;
+      gap: 20px;
+    }
+   #textCanvas{
+    border: 3px solid grey;
+  }
+  </style>
+	
+    <script type="text/javascript" src = "source.js"> </script>    
+ </head> 
+ 
+ <body onload="webGLStart();">
+  <div class="wrapper">
+    <div class="container" id = "container">
+      <canvas id="textCanvas" width="800" height="600" style="position:relative; top:0px; left:0px; z-index:1"></canvas> 
+    </div>
+    <div class="description-container">
+      <div class="main-description">First right click will add/remove points. </div>
+      <div class="main-description">Second rigth click will add a unit tangent vector to the previous added point</div>
+      <div class="main-description">You can move vectors by selecting the vector head with left mouse button</div>
+      <div class="button-container">
+        <input type="checkbox" id="draw_curve" autocomplete="off" /><span>Draw curve from control points</span></br>
+        <input type="checkbox" id="show_control_polygon" autocomplete="off" /><span>Show control polygon</span></br>
+        <input type="checkbox" id="show_coordinate_system" autocomplete="off" checked /><span>Show coordinate system</span></br>
+      </div>
+      
+      <div>
+        <input type="checkbox" id="requirements_fulfilled" autocomplete="off" onclick="return false;" />
+        <span>Minimum requirements fulfilled (two points with two tangent vectors)</span></br>
+        <span>Parameter R:</span>
+        <input type="range" name="myRange" min="0" max="1" step="0.1" value="0" id="myRange" autocomplete="off" oninput="r_amount.value=this.value" onchange="r_amount.value=this.value" >
+        <output id="r_amount" name="amount" for="myRange">0</output></br>	
+        <span>R parameter index: </span>
+        <select id="r_param_idx">
+          <option value="1">1</option>
+        </select>
+      </div>
+      <div id="FPS"></div>
+      <button id = "clear" type = "button" onclick="clearCanvas()"> Clear </button>
+    </div>
+  </div>
+   
+ </body>
+ 
+</html>
